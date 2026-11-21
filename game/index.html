@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — Lanterns, Koi &amp; Stars</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <div id="hud-title">Spot the Difference</div>
+      <div id="hud-level">Lantern Night Market · Easy</div>
+    </div>
+    <div class="hud-mid">
+      <div id="hud-counter">0 / 8 found · 8 left</div>
+      <div id="hud-timer-bar"><div id="hud-timer-fill"></div></div>
+      <div id="hud-timer">3:00</div>
+    </div>
+    <div class="hud-right">
+      <div id="hud-score">Score 0</div>
+      <div id="hud-combo"></div>
+      <div id="hud-hints">Hints 3</div>
+    </div>
+  </header>
+
+  <div id="panels">
+    <div class="panel-wrap">
+      <div class="panel-label">Picture A</div>
+      <canvas id="panel-a" width="600" height="450"></canvas>
+    </div>
+    <div class="panel-wrap">
+      <div class="panel-label">Picture B</div>
+      <canvas id="panel-b" width="600" height="450"></canvas>
+    </div>
+  </div>
+
+  <footer id="controls">
+    <button id="btn-hint">Hint (H) · 3 left</button>
+    <button id="btn-pause">Pause</button>
+    <button id="btn-mute">Mute (M)</button>
+    <button id="btn-menu">Levels</button>
+    <span id="controls-help">Click a difference on either picture · H hint · 1/2/3 level · R restart · Esc pause</span>
+  </footer>
+
+  <div id="toast"></div>
+
+  <!-- start / level select -->
+  <div id="overlay-menu" class="overlay">
+    <div class="card">
+      <h1>Spot the Difference</h1>
+      <p class="tagline">Two pictures. Eight tiny changes. How sharp are your eyes?</p>
+      <div id="menu-levels"></div>
+      <div class="menu-actions">
+        <button id="btn-start" class="primary">Play level 1</button>
+        <button id="btn-howto">How to play</button>
+      </div>
+      <div id="howto" class="hidden">
+        <p>Look at the two pictures side by side and click a difference on <b>either</b> picture.
+        Found differences get a gold ring. A wrong click costs 5 seconds and resets your combo;
+        every find earns points and +5 seconds. Stuck? Press <b>H</b> for a hint (3 per level,
+        8s cooldown). Finish all 8 before the timer runs out.</p>
+        <p>Keys: <b>H</b> hint · <b>1/2/3</b> level · <b>R</b> restart · <b>Esc/P</b> pause · <b>M</b> mute.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- pause -->
+  <div id="overlay-pause" class="overlay hidden">
+    <div class="card">
+      <h1>Paused</h1>
+      <p class="tagline">Take a breath — the timer is waiting.</p>
+      <div class="menu-actions">
+        <button id="btn-resume" class="primary">Resume</button>
+        <button id="btn-quit-pause">Back to levels</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- win / lose -->
+  <div id="overlay-end" class="overlay hidden">
+    <div class="card">
+      <h1 id="end-title">You found them all!</h1>
+      <p class="tagline" id="end-sub"></p>
+      <div id="end-stats"></div>
+      <div class="menu-actions">
+        <button id="btn-next" class="primary">Next level</button>
+        <button id="btn-retry">Play again</button>
+        <button id="btn-end-menu">Levels</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
